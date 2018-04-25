@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A276B47204051F900137E5E /* conjTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A276B46204051F900137E5E /* conjTableViewCell.swift */; };
+		6A276B492040526B00137E5E /* conjVerbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A276B482040526B00137E5E /* conjVerbs.swift */; };
+		6A4FDBD620447E5300266C00 /* WebpageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FDBD520447E5300266C00 /* WebpageViewController.swift */; };
+		6A58BAE32056B549005613BB /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 6A58BAE22056B549005613BB /* home.html */; };
+		6A6D05CF2085468F00BE2A8A /* WoodCREE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6A6D05CE2085468F00BE2A8A /* WoodCREE.TTF */; };
+		6A78EFBA204DDCBB00539981 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A78EFB9204DDCBA00539981 /* DisplayViewController.swift */; };
+		6A7E41DF2077B069000CD4D7 /* verbs2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E41DE2077B069000CD4D7 /* verbs2.txt */; };
+		6AC289CF2046EA79006CD505 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC289CE2046EA79006CD505 /* ListViewController.swift */; };
+		6ADAC537203F2E4D00C5B0C7 /* CreeVerb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADAC536203F2E4D00C5B0C7 /* CreeVerb.swift */; };
+		6ADAC53F203F69C500C5B0C7 /* verbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADAC53E203F69C500C5B0C7 /* verbTableViewCell.swift */; };
 		6AF6F342203E03D000ED168A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6F341203E03D000ED168A /* AppDelegate.swift */; };
 		6AF6F344203E03D000ED168A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6F343203E03D000ED168A /* ViewController.swift */; };
 		6AF6F347203E03D000ED168A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF6F345203E03D000ED168A /* Main.storyboard */; };
@@ -15,11 +25,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A276B46204051F900137E5E /* conjTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = conjTableViewCell.swift; sourceTree = "<group>"; };
+		6A276B482040526B00137E5E /* conjVerbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = conjVerbs.swift; sourceTree = "<group>"; };
+		6A2862AD206145C7003CD108 /* Cree Conjugation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cree Conjugation.entitlements"; sourceTree = "<group>"; };
+		6A4FDBD520447E5300266C00 /* WebpageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebpageViewController.swift; sourceTree = "<group>"; };
+		6A58BAE22056B549005613BB /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = SOURCE_ROOT; };
+		6A6D05CE2085468F00BE2A8A /* WoodCREE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = WoodCREE.TTF; path = ../../../../Downloads/nonUnicodeFonts/WoodCREE.TTF; sourceTree = "<group>"; };
+		6A78EFB9204DDCBA00539981 /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
+		6A7E41DE2077B069000CD4D7 /* verbs2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = verbs2.txt; sourceTree = "<group>"; };
+		6AC289CE2046EA79006CD505 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		6ADAC536203F2E4D00C5B0C7 /* CreeVerb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreeVerb.swift; sourceTree = "<group>"; };
+		6ADAC53E203F69C500C5B0C7 /* verbTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = verbTableViewCell.swift; sourceTree = "<group>"; };
 		6AF6F33E203E03D000ED168A /* Cree Conjugation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cree Conjugation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AF6F341203E03D000ED168A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AF6F343203E03D000ED168A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6AF6F346203E03D000ED168A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6AF6F348203E03D000ED168A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AF6F348203E03D000ED168A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Cree Conjugation/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		6AF6F34B203E03D000ED168A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AF6F34D203E03D000ED168A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,11 +56,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A2862AE20614EE3003CD108 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6AF6F335203E03CF00ED168A = {
 			isa = PBXGroup;
 			children = (
 				6AF6F340203E03D000ED168A /* Cree Conjugation */,
 				6AF6F33F203E03D000ED168A /* Products */,
+				6A2862AE20614EE3003CD108 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,12 +83,23 @@
 		6AF6F340203E03D000ED168A /* Cree Conjugation */ = {
 			isa = PBXGroup;
 			children = (
+				6A2862AD206145C7003CD108 /* Cree Conjugation.entitlements */,
 				6AF6F341203E03D000ED168A /* AppDelegate.swift */,
 				6AF6F343203E03D000ED168A /* ViewController.swift */,
 				6AF6F345203E03D000ED168A /* Main.storyboard */,
+				6A78EFB9204DDCBA00539981 /* DisplayViewController.swift */,
+				6AC289CE2046EA79006CD505 /* ListViewController.swift */,
+				6A4FDBD520447E5300266C00 /* WebpageViewController.swift */,
+				6A276B482040526B00137E5E /* conjVerbs.swift */,
+				6A276B46204051F900137E5E /* conjTableViewCell.swift */,
+				6ADAC53E203F69C500C5B0C7 /* verbTableViewCell.swift */,
+				6ADAC536203F2E4D00C5B0C7 /* CreeVerb.swift */,
+				6A7E41DE2077B069000CD4D7 /* verbs2.txt */,
+				6A58BAE22056B549005613BB /* home.html */,
 				6AF6F348203E03D000ED168A /* Assets.xcassets */,
 				6AF6F34A203E03D000ED168A /* LaunchScreen.storyboard */,
 				6AF6F34D203E03D000ED168A /* Info.plist */,
+				6A6D05CE2085468F00BE2A8A /* WoodCREE.TTF */,
 			);
 			path = "Cree Conjugation";
 			sourceTree = "<group>";
@@ -98,6 +138,14 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 8GM62J5SRE;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -125,7 +173,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AF6F34C203E03D000ED168A /* LaunchScreen.storyboard in Resources */,
+				6A58BAE32056B549005613BB /* home.html in Resources */,
+				6A6D05CF2085468F00BE2A8A /* WoodCREE.TTF in Resources */,
 				6AF6F349203E03D000ED168A /* Assets.xcassets in Resources */,
+				6A7E41DF2077B069000CD4D7 /* verbs2.txt in Resources */,
 				6AF6F347203E03D000ED168A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +190,13 @@
 			files = (
 				6AF6F344203E03D000ED168A /* ViewController.swift in Sources */,
 				6AF6F342203E03D000ED168A /* AppDelegate.swift in Sources */,
+				6A78EFBA204DDCBB00539981 /* DisplayViewController.swift in Sources */,
+				6AC289CF2046EA79006CD505 /* ListViewController.swift in Sources */,
+				6ADAC53F203F69C500C5B0C7 /* verbTableViewCell.swift in Sources */,
+				6A276B492040526B00137E5E /* conjVerbs.swift in Sources */,
+				6A4FDBD620447E5300266C00 /* WebpageViewController.swift in Sources */,
+				6A276B47204051F900137E5E /* conjTableViewCell.swift in Sources */,
+				6ADAC537203F2E4D00C5B0C7 /* CreeVerb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +360,7 @@
 				6AF6F352203E03D000ED168A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
