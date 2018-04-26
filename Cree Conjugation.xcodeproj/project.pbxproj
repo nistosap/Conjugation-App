@@ -20,7 +20,6 @@
 		6AF6F342203E03D000ED168A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6F341203E03D000ED168A /* AppDelegate.swift */; };
 		6AF6F344203E03D000ED168A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6F343203E03D000ED168A /* ViewController.swift */; };
 		6AF6F347203E03D000ED168A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF6F345203E03D000ED168A /* Main.storyboard */; };
-		6AF6F349203E03D000ED168A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF6F348203E03D000ED168A /* Assets.xcassets */; };
 		6AF6F34C203E03D000ED168A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF6F34A203E03D000ED168A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -175,7 +174,6 @@
 				6AF6F34C203E03D000ED168A /* LaunchScreen.storyboard in Resources */,
 				6A58BAE32056B549005613BB /* home.html in Resources */,
 				6A6D05CF2085468F00BE2A8A /* WoodCREE.TTF in Resources */,
-				6AF6F349203E03D000ED168A /* Assets.xcassets in Resources */,
 				6A7E41DF2077B069000CD4D7 /* verbs2.txt in Resources */,
 				6AF6F347203E03D000ED168A /* Main.storyboard in Resources */,
 			);
@@ -319,6 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 8GM62J5SRE;
 				INFOPLIST_FILE = "Cree Conjugation/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -332,6 +331,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 8GM62J5SRE;
 				INFOPLIST_FILE = "Cree Conjugation/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
