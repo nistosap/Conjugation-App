@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         navigationController?.navigationBar.barTintColor = titleColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
 
         
         deleteBool = false
@@ -114,7 +114,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        let myTitle = NSAttributedString(string: verbTypes[row], attributes: [NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: verbTypes[row], attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
         return myTitle
     }
     
@@ -168,7 +168,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
 //MARK: Conjugation
     private func prepareVerb(theVerb: String, theType:String) -> String {
         var eVerb = String()
-        if theVerb.characters.count <= 1 {
+        if theVerb.count <= 1 {
             return theVerb
         }
         
@@ -179,7 +179,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             //for VAI verb, remove last e, add a, for 1,2,1p,21,2p
             switch eIndex {
             case "ê","e","ē":
-                eVerb = theVerb.substring(to: theVerb.index(before:theVerb.endIndex)) + "â"
+                eVerb = theVerb[..<theVerb.index(before:theVerb.endIndex)] + "â"
+               // eVerb = theVerb.substring(to: theVerb.index(before:theVerb.endIndex)) + "â"
             default:
                 eVerb = theVerb
             }
@@ -188,7 +189,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         case "VTI": //VTI verbs ending is either w or m
             //for VTI verbs remove last 'a' and change to ê for 1,2,1p,21,2p
             if eIndex == "a" {
-                eVerb = theVerb.substring(to: theVerb.index(before:theVerb.endIndex)) + "ê"
+                eVerb = theVerb[..<theVerb.index(before:theVerb.endIndex)] + "ê"
+               // eVerb = theVerb.substring(to: theVerb.index(before:theVerb.endIndex)) + "ê"
                 boolVTIsuffix = true
             } else {
                 eVerb = theVerb
@@ -207,7 +209,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     private func addT(theVerb: String, thePrefix: String) -> String {
         var tVerb:String = ""
         var tempConvert:[Character] = []
-            for char in theVerb.characters {
+            for char in theVerb {
                 tempConvert.append(char)// fil tempConvert with all characters
             }
             switch tempConvert[0] {
@@ -407,11 +409,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         } 
         
         //check for am and conjugate it
-        if !(checkEnglish.characters.count < 2) {
+        if !(checkEnglish.count < 2) {
             let secIndex = checkEnglish.index(checkEnglish.startIndex, offsetBy: 2)
-            lowercaseEnglish = checkEnglish.lowercased().substring(to: secIndex)
+            lowercaseEnglish = String(checkEnglish.lowercased()[..<secIndex])
+           // lowercaseEnglish = checkEnglish.lowercased().substring(to: secIndex)
             if (lowercaseEnglish == "am"){
-                if checkEnglish.characters.count <= 2 {
+                if checkEnglish.count <= 2 {
                     checked = "\(verbAm[index])"
                 } else {
                     checked = "\(verbAm[index])\(checked[secIndex...checked.index(before:checked.endIndex)])"
@@ -426,9 +429,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         let theText = NSMutableAttributedString()
         theText.deleteCharacters(in: NSMakeRange(0, theText.length))
         
-        let attrCree = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18)]
-        let attrPlain = [NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
-        let attrEng = [NSFontAttributeName: UIFont.systemFont(ofSize: 16)]
+        let attrCree = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)]
+        let attrPlain = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)]
+        let attrEng = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+        let attrSyll = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)]
+        
         for (index, person) in people.enumerated(){
             let atPerson = NSMutableAttributedString(string: "\(person): ")
             atPerson.addAttributes(attrPlain, range: NSMakeRange(0, atPerson.length))
@@ -441,7 +446,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             let atVerb = NSMutableAttributedString(string: "\(attrVerb[index])")
             atVerb.addAttributes(attrPlain, range: NSMakeRange(0, atVerb.length))
             theText.append(atVerb)
-           // let atSuffix = NSMutableAttributedString()
+           
             if boolN {
                 if index == 2 {
                     let prePrefix = NSMutableAttributedString(string: " - ")
@@ -449,7 +454,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                     theText.append(prePrefix)
                     let verbtoConvert = "\(attrPrefix[index])\(attrVerb[index])"
                     let syllabics = NSMutableAttributedString(string: "\(convertSyllabics(Cree:verbtoConvert))")
-                    let attrSyll = [NSFontAttributeName: UIFont(name: "Saulteaux-Syllabic", size: 18)!]
+                   
                     syllabics.addAttributes(attrSyll, range: NSMakeRange(0, syllabics.length))
                     theText.append(syllabics)
                 } else if index == 7 {
@@ -462,7 +467,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                     
                     let verbtoConvert = "\(attrPrefix[index])\(attrVerb[index])\(attrSuffix[index])"
                     let syllabics = NSMutableAttributedString(string: "\(convertSyllabics(Cree:verbtoConvert))")
-                    let attrSyll = [NSFontAttributeName: UIFont(name: "Saulteaux-Syllabic", size: 18)!]
+                    
                     syllabics.addAttributes(attrSyll, range: NSMakeRange(0, syllabics.length))
                     theText.append(syllabics)
                 } else {
@@ -475,7 +480,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                     
                     let verbtoConvert = "\(attrPrefix[index])\(attrVerb[index])i\(attrSuffix[index])"
                     let syllabics = NSMutableAttributedString(string: "\(convertSyllabics(Cree:verbtoConvert))")
-                    let attrSyll = [NSFontAttributeName: UIFont(name: "Saulteaux-Syllabic", size: 18)!]
+                    
                     syllabics.addAttributes(attrSyll, range: NSMakeRange(0, syllabics.length))
                     theText.append(syllabics)
                 }
@@ -490,7 +495,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                 
                 let verbtoConvert = "\(attrPrefix[index])\(attrVerb[index])\(attrSuffix[index])"
                 let syllabics = NSMutableAttributedString(string: "\(convertSyllabics(Cree:verbtoConvert))")
-                let attrSyll = [NSFontAttributeName: UIFont(name: "Saulteaux-Syllabic", size: 18)!]
+               
                 syllabics.addAttributes(attrSyll, range: NSMakeRange(0, syllabics.length))
                 theText.append(syllabics)
             }
@@ -520,7 +525,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                     
                     let verbtoConvert = "\(attrPrefix[index])\(attrVerb[index])nâ\(attrSuffix[index])"
                     let syllabics = NSMutableAttributedString(string: "\(convertSyllabics(Cree:verbtoConvert))")
-                    let attrSyll = [NSFontAttributeName: UIFont(name: "Saulteaux-Syllabic", size: 18)!]
+                   
                     syllabics.addAttributes(attrSyll, range: NSMakeRange(0, syllabics.length))
                     theText.append(syllabics)
                 }
@@ -552,7 +557,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                     
                     let verbtoConvert = "\(attrPrefix[index])\(attrVerb[index])i\(attrSuffix[index])"
                     let syllabics = NSMutableAttributedString(string: "\(convertSyllabics(Cree:verbtoConvert))")
-                    let attrSyll = [NSFontAttributeName: UIFont(name: "Saulteaux-Syllabic", size: 18)!]
+                   
                     syllabics.addAttributes(attrSyll, range: NSMakeRange(0, syllabics.length))
                     theText.append(syllabics)
                     
@@ -576,7 +581,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     //get the imperative//root verb
     private func getImperative(theVerb:String, theType:Int) -> String {
         // if too short, return the short word
-        if theVerb.characters.count <= 1 {
+        if theVerb.count <= 2 {
             rootVerb = theVerb
             return theVerb
         }
@@ -593,22 +598,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                 imperativeVerb = theVerb + "i"
             default:
                 boolN = false
-                rootVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
-                imperativeVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
+                rootVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+              //  rootVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
+                imperativeVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+               // imperativeVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
             }
             
         case 2: //VTA
-            count = Int(tempVerb.characters.count)-3
+            count = Int(tempVerb.count)-3
             let startI = tempVerb.startIndex
             let endI = tempVerb.index(tempVerb.startIndex, offsetBy: count)
             let range = startI...endI
             //remove êw for root
-            rootVerb = tempVerb[range]
+            rootVerb = String(tempVerb[range])
             let eIndex = rootVerb[rootVerb.index(before: rootVerb.endIndex)]
             //if ends in t, imperative ends in s
             if eIndex == "t" {
                 //change ending to t to s in 1,1P cases
-                count = Int(rootVerb.characters.count)-2
+                count = Int(rootVerb.count)-2
                 let startI = rootVerb.startIndex
                 let endI = rootVerb.index(rootVerb.startIndex, offsetBy: count)
                 let range = startI...endI
@@ -617,8 +624,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                 imperativeVerb = rootVerb
             }
         case 3: //VTI
-            rootVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
-            imperativeVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
+           rootVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+           
+            imperativeVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+            
         default:
             break
         }
@@ -626,7 +635,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
     private func getRootVerb(theVerb:String, theType:Int) -> String {
         // if too short, return the short word
-        if theVerb.characters.count <= 1 {
+        if theVerb.count <= 2 {
             return theVerb
         }
         
@@ -643,21 +652,23 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                 
             default:
                 boolN = false
-                tempVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
+                tempVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+               
                 
             }
             
         case 2: //VTA
             
-            count = Int(tempVerb.characters.count)-3
+            count = Int(tempVerb.count)-3
             let startI = tempVerb.startIndex
             let endI = tempVerb.index(tempVerb.startIndex, offsetBy: count)
             let range = startI...endI
             //remove êw for root
-            tempVerb = tempVerb[range]
+            tempVerb = String(tempVerb[range])
             
         case 3: //VTI
-            tempVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
+           tempVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+           
             
         default:
             break
@@ -675,15 +686,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         var boolW = Bool()
         var boolTH = Bool()
         convertedText = Cree.lowercased()
-        var strLength = convertedText.characters.count - 1
-        let syllabics1 = ["z","Z","q","Q","a","A","1","b","B","t","T","g","G","5",
-                          "v","V","r","R","f","F","4","n","N","y","Y","h","H","6",
-                          "m","M","u","U","j","J","7","x","X","w","W","s","S","2",
-                          ",","<","i","I","k","K","8","c","C","e","E","d","D","3",
-                          ".",">","o","O","l","L","9","/","?","p","P",";",":","0"]
-        let syllabics2 = ["!","=","@","#","$","%","^","&","*","(","[","{",")"]
+        var strLength = convertedText.count - 1
+     
+        let syllabics1 = ["ᐊ","ᐋ","ᐃ", "ᐄ","ᐅ", "ᐆ", "ᐁ","ᒐ", "ᒑ", "ᒋ", "ᒌ", "ᒍ", "ᒎ", "ᒉ",
+                          "ᑲ", "ᑳ", "ᑭ", "ᑮ", "ᑯ", "ᑰ", "ᑫ", "ᒪ", "ᒫ", "ᒥ", "ᒦ", "ᒧ", "ᒨ", "ᒣ",
+                          "ᓇ", "ᓈ", "ᓂ", "ᓃ", "ᓄ", "ᓅ", "ᓀ", "ᐸ", "ᐹ", "ᐱ", "ᐲ", "ᐳ", "ᐴ", "ᐯ",
+                          "ᓴ", "ᓵ", "ᓯ", "ᓰ", "ᓱ", "ᓲ", "ᓭ", "ᑕ", "ᑖ", "ᑎ", "ᑏ", "ᑐ", "ᑑ", "ᑌ",
+                          "ᔭ", "ᔮ", "ᔨ", "ᔩ", "ᔪ", "ᔫ", "ᔦ", "ᖬ", "ᖭ", "ᖨ", "ᖩ", "ᖪ", "ᖫ", "ᖧ"]
+        let syllabics2 = ["ᐧ","ᐤ", "ᑊ", "ᐟ", "ᐠ", "ᐨ", "ᒼ", "ᐣ", "ᐢ", "ᐩ", "ᕽ", "ᐦ", "≠"]
         
-        for char in convertedText.characters {
+        for char in convertedText {
             if !((char == "-") || (char == " ") || (char == "(") || (char == ")")){
                 tempConvert.append(char)// fil tempConvert with all characters
             }  else {
@@ -1351,6 +1363,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             fatalError("no nav controller")
         }
     }
+   
+    
 
 }
-

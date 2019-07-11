@@ -96,7 +96,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     let futInvYou = ["yani","yâhki","yêko"]
     
     //inverse
-    let i3VTAa = ["she/he/it", "she/he/it", "hers/his/its","her/his/its__","she/he/it","she/he/it","she/he/it","they",] //actor of inv
+    let i3VTAa = ["she/he/it", "she/he/it", "hers/his/its","her/his/its__","she/he/it","she/he/it","she/he/it","they"] //actor of inv
     let i3VTAo = ["me", "you", "by her/him", "by her/him", "us(exc)", "us(inc)", "you(pl)", "by her/him"]//object of inv
     let indInvVTA = ["k", "k", "k", "koyiwa", "konân", "konaw", "kowâw", "kowak"]
     let conInvVTA = ["t", "sk", "kot", "koyit", "koyâhk", "koyahk", "koyêk", "kocik"]
@@ -127,12 +127,14 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     var attrImpVerb = [String]()//plain
     var attrImpEnglish = [String]()//plain
     
-    let attr = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 19), NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
+   
+    let attrBold = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 19)]
+    let attrUnder = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+    let attrCree = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)]
+    let attrPlain = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)]
+    let attrEng = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+    let attrSyll = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)]
     
-    let attrCree = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18)]
-    let attrPlain = [NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
-    let attrEng = [NSFontAttributeName: UIFont.systemFont(ofSize: 16)]
-    let attrSyll = [NSFontAttributeName: UIFont(name: "Saulteaux-Syllabic", size: 18)!]
     let titleColor = UIColor(red:98/255, green: 152/255, blue:83/255, alpha:1)
     let pickedColor = UIColor(red:30/255, green: 58/255, blue:162/255, alpha:1)
     let noPlural = UIColor(red:223/255, green: 246/255, blue:218/255, alpha:1)
@@ -204,7 +206,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         }else {
             samplePreverbs = "\(preVerbs[row]) \'\(preVerb_e[row-1])\'"
         }
-        let myTitle = NSAttributedString(string: samplePreverbs, attributes: [NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: samplePreverbs, attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
         return myTitle
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -213,7 +215,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     }
 
        private func getverbType(theVerb: String, theType: String) -> String{
-        if theVerb.characters.count <= 1 {
+        if theVerb.count <= 2 {
             rootVerb = theVerb
             return ""
         }
@@ -226,19 +228,21 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                 rootVerb = theVerb
                 boolN = true
             } else {
-               rootVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
+                rootVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+               // rootVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
                 boolN = false
             }
             
         case "VTA":
-            count = Int(tempVerb.characters.count)-3
+            count = Int(tempVerb.count)-3
             let startI = tempVerb.startIndex
             let endI = tempVerb.index(tempVerb.startIndex, offsetBy: count)
             let range = startI...endI
             //remove êw for root
-            rootVerb = tempVerb[range]
+            rootVerb = String(tempVerb[range])
         case "VTI":
-            rootVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
+            rootVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+         //   rootVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
         default:
             break
         }
@@ -262,7 +266,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
             case "t": //VTA4
                 return "4"
             case "w": //vta2,3
-                count = Int(rootVerb.characters.count)-2
+                count = Int(rootVerb.count)-2
                 let tIndex = rootVerb[rootVerb.index(theVerb.startIndex, offsetBy: count)]
                 switch tIndex {
                 case "a", "A": //VTA2
@@ -282,7 +286,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     }
     //prepare verb, change endings for certain verbs
     private func prepareVerb(theVerb: String, theType:String) -> String {
-        if theVerb.characters.count <= 1{
+        if theVerb.count <= 2{
             return theVerb
         }
         var eVerb:String = ""
@@ -292,14 +296,16 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         case "VAI": //VAI verb
             //for VAI verb, remove last e, add a, for 1,2,1p,21,2p
             if (eIndex == "ê") || (eIndex == "e") {
-                eVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex)) + "â"
+                eVerb = tempVerb[..<tempVerb.index(before:tempVerb.endIndex)] + "â"
+                //eVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex)) + "â"
             } else {
                 eVerb = tempVerb
             }
         case "VTI": //VTI verbs
             //for VTI verbs remove last 'a' and change to ê for 1,2,1p,21,2p
             if eIndex == "a" {
-                eVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex)) + "ê"
+                eVerb = tempVerb[..<tempVerb.index(before:tempVerb.endIndex)] + "ê"
+               // eVerb = tempVerb.substring(to: ) + "ê"
                 boolVTIsuffix = true
             } else {
                 eVerb = tempVerb
@@ -308,7 +314,8 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         default: //VTA
             switch eIndex {
             case "a","â","ā","ê","e","ē","i","î","ī","o","ô","ō"://remove last vowel if exists
-                eVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
+                eVerb = String(tempVerb[..<tempVerb.index(before:tempVerb.endIndex)])
+                //eVerb = tempVerb.substring(to: tempVerb.index(before:tempVerb.endIndex))
             default:
                 eVerb = tempVerb
             }
@@ -324,12 +331,12 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         
         
         if thePrev > 0 {//preverb added
-            for char in preVerbs[thePrev].characters {
+            for char in preVerbs[thePrev] {
                 tempConvert.append(char)// fil tempConvert with all characters
             }
             
         } else {
-            for char in theVerb.characters {
+            for char in theVerb {
                 tempConvert.append(char)// fil tempConvert with all characters
             }
         }
@@ -343,8 +350,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     }
     
     private func getVTAVerbType(theVerb:String) -> String{
-        if theVerb.characters.count <= 1 {
-            
+        if theVerb.count <= 2 {
             iVerb = 0
             invSuff = "i"
             return theVerb
@@ -357,7 +363,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         switch eIndex {
         case "t": //VTA4
             //change ending to t to s in 1,1P cases
-            count = Int(tempVerb.characters.count)-2
+            count = Int(tempVerb.count)-2
             let startI = tempVerb.startIndex
             let endI = tempVerb.index(tempVerb.startIndex, offsetBy: count)
             let range = startI...endI
@@ -365,16 +371,16 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
             iVerb = 4
             invSuff = "i"
         case "w": //vta2,3
-            count = Int(tempVerb.characters.count)-2
+            count = Int(tempVerb.count)-2
             let tIndex = tempVerb[tempVerb.index(theVerb.startIndex, offsetBy: count)]
             switch tIndex {
             case "a", "A": //VTA2
-                count = Int(tempVerb.characters.count)-3
+                count = Int(tempVerb.count)-3
                 let startI = tempVerb.startIndex
                 let endI = tempVerb.index(tempVerb.startIndex, offsetBy: count)
                 let range = startI...endI
                 //remove aw for 2, 2P
-                impVTAverb = tempVerb[range]
+                impVTAverb = String(tempVerb[range])
                 iVerb = 2
                 invSuff = "â"
                 
@@ -384,12 +390,12 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                 invSuff = "i"
                 
             default: //VTA3 Cw
-                count = Int(tempVerb.characters.count)-2
+                count = Int(tempVerb.count)-2
                 let startI = tempVerb.startIndex
                 let endI = tempVerb.index(tempVerb.startIndex, offsetBy: count)
                 let range = startI...endI
                 //remove w for 1,1P, and 2,2p
-                impVTAverb = tempVerb[range]
+                impVTAverb = String(tempVerb[range])
                 iVerb = 3
                 invSuff = "o"
             }
@@ -403,7 +409,8 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         //remove last vowel
         switch eIndex {
         case "â","ā","Â","Ā","ê","e","ē","E","Ê","Ē","i","î","ī","I","Î","Ī","o","ō","O","Ô","ô", "Ō":
-            impVTAverb = impVTAverb.substring(to: impVTAverb.index(before:impVTAverb.endIndex))
+            impVTAverb = String(impVTAverb[..<impVTAverb.index(before:impVTAverb.endIndex)])
+           // impVTAverb = impVTAverb.substring(to: impVTAverb.index(before:impVTAverb.endIndex))
         default:
             break
         }
@@ -429,6 +436,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         var invAmpl = ["are","are","is","is","are","are","are","are"]
         var youAm = ["am","are","am"]
         lowercaseEnglish = checkEnglish.lowercased()
+        
         //check for self and conjugate it
         if lowercaseEnglish.range(of: "self") != nil {
             checked = lowercaseEnglish.replacingOccurrences(of: "self", with: verbSelf[index])
@@ -443,14 +451,14 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
             }
         }
         
-        if !(checkEnglish.characters.count < 2 ) {
+        if !(checkEnglish.count < 2 ) {
         //check for 'am' and conjugate it
-            if checkEnglish.characters.count <= 2 {
+            if checkEnglish.count <= 2 {
                 checked = checked + " "
             }
             let secIndex = checkEnglish.index(checkEnglish.startIndex, offsetBy: 2)
-            
-            lowercaseEnglish = checkEnglish.lowercased().substring(to: secIndex)
+            lowercaseEnglish = String(checkEnglish.lowercased()[..<secIndex])
+           // lowercaseEnglish = checkEnglish.lowercased().substring(to: secIndex)
         
             if (lowercaseEnglish == "am"){
                 switch tense {
@@ -616,7 +624,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         bInverse.backgroundColor = titleColor
         bConjunct.backgroundColor = titleColor
         bImperative.backgroundColor = titleColor
-        pluralButton.backgroundColor = noPlural
+        pluralButton.backgroundColor = titleColor
         
         pluralButton.isEnabled = false
         pluralButton.setTitle("No plural", for: .normal)
@@ -653,7 +661,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
             fatalError("no nav controller")
         }
     }
-//Mark:conj2
+//Mark:conjugation
     private func conjugation(theVerb:CreeVerb, thePrev:Int) {
         
         attrPrefix = []
@@ -800,7 +808,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                 }
                 
             case "Imp":
-                var tempIndex = theVerb.imperative
+                let tempIndex = theVerb.imperative
                 let aIndex = tempIndex[tempIndex.index(before: tempIndex.endIndex)]
                 
                 
@@ -810,19 +818,19 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                         attrImpVerb.append(theVerb.imperative)
                     case 3,4,5:
                         if aIndex == "i" {
-                            let counti = Int(tempIndex.characters.count)-2
+                            let counti = Int(tempIndex.count)-2
                             let startI = tempIndex.startIndex
                             let endI = tempIndex.index(tempIndex.startIndex, offsetBy: counti)
                             let range = startI...endI
                             let longI = tempIndex[range] + "î"
-                            attrImpVerb.append(longI)
+                            attrImpVerb.append(String(longI))
                         } else if aIndex == "o" {
-                            let counti = Int(tempIndex.characters.count)-2
+                            let counti = Int(tempIndex.count)-2
                             let startI = tempIndex.startIndex
                             let endI = tempIndex.index(tempIndex.startIndex, offsetBy: counti)
                             let range = startI...endI
                             let longI = tempIndex[range] + "ô"
-                            attrImpVerb.append(longI)
+                            attrImpVerb.append(String(longI))
                         } else {
                             attrImpVerb.append(vaiVerb)
                         }
@@ -2461,10 +2469,15 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         theText.deleteCharacters(in: NSMakeRange(0, theText.length))
         
         var inc:Int = 0
-        var theTitle = NSAttributedString()
+       // var theTitle = NSMutableAttributedString()
         let sCount = section.count
         for i in 1...sCount {
-            theTitle = NSAttributedString(string: "\n\(section[i-1])\n", attributes: attr)
+            
+           var theTitle = NSMutableAttributedString(string: "\n\(section[i-1])\n")
+            
+            theTitle.addAttributes(attrBold, range: NSMakeRange(0, theTitle.length))
+            theTitle.addAttributes(attrUnder, range: NSMakeRange(0, theTitle.length))
+          
             theText.append(theTitle)
             
             inc = i-1
@@ -2536,7 +2549,11 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                             
                             
                         case 3:
-                            theTitle = NSAttributedString(string: "Delayed\n", attributes: attr)
+                           // theTitle = NSAttributedString(string: "Delayed\n", attributes: attr as? [NSAttributedStringKey : Any])
+                             theTitle = NSMutableAttributedString(string: "Delayed\n")
+                            
+                             theTitle.addAttributes(attrBold, range: NSMakeRange(0, theTitle.length))
+                             theTitle.addAttributes(attrUnder, range: NSMakeRange(0, theTitle.length))
                             let atPerson = NSMutableAttributedString(string: "\(impPeople[0]): ")
                             atPerson.addAttributes(attrPlain, range: NSMakeRange(0, atPerson.length))
                             let atPrefix = NSMutableAttributedString(string: "\(attrImpPrefix[inc])")
@@ -2659,7 +2676,12 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                         
                         
                     case 3:
-                        theTitle = NSAttributedString(string: "Delayed\n", attributes: attr)
+                        theTitle = NSMutableAttributedString(string: "Delayed\n")
+                        
+                        theTitle.addAttributes(attrBold, range: NSMakeRange(0, theTitle.length))
+                        theTitle.addAttributes(attrUnder, range: NSMakeRange(0, theTitle.length))
+
+                        
                         let atPerson = NSMutableAttributedString(string: "\(impPeople[0]): ")
                         atPerson.addAttributes(attrPlain, range: NSMakeRange(0, atPerson.length))
                         let atPrefix = NSMutableAttributedString(string: "\(attrImpPrefix[inc])")
@@ -2783,11 +2805,12 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                         atSuffix.addAttributes(attrCree, range: NSMakeRange(0, atSuffix.length))
                         
                        //edit later
-                        let verbtoConvert = "\(rootVerb)i\(attrSuffix[inc])"
+                        let verbtoConvert = "\(attrPrefix[inc])\(rootVerb)i\(attrSuffix[inc])"
                         let syllabics = NSMutableAttributedString(string: "\(convertSyllabics(Cree:verbtoConvert))")
                         syllabics.addAttributes(attrSyll, range: NSMakeRange(0, syllabics.length))
 
                         theText.append(prePrefix1)
+                        theText.append(atPrefix)
                         theText.append(atVerb)
                         theText.append(atSuffix)
                         theText.append(prePrefix)
@@ -2816,8 +2839,8 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                         let prePrefix1 = NSMutableAttributedString(string: "\n or: ")
                         prePrefix1.addAttributes(attrPlain, range: NSMakeRange(0, prePrefix1.length))
                       
-                        
-                        let eVerb = rootVerb.substring(to: rootVerb.index(before:rootVerb.endIndex))
+                        let eVerb = String(rootVerb[..<rootVerb.index(before:rootVerb.endIndex)])
+                        //let eVerb = rootVerb.substring(to: rootVerb.index(before:rootVerb.endIndex))
                         let atPrefix = NSMutableAttributedString(string: "\(attrPrefix[inc])")
                         atPrefix.addAttributes(attrCree, range: NSMakeRange(0, atPrefix.length))
                         let atVerb = NSMutableAttributedString(string: "\(eVerb)")
@@ -2844,8 +2867,8 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                         let prePrefix1 = NSMutableAttributedString(string: "\n or: ")
                         prePrefix1.addAttributes(attrPlain, range: NSMakeRange(0, prePrefix1.length))
                         
-                        
-                        let eVerb = rootVerb.substring(to: rootVerb.index(before:rootVerb.endIndex))
+                        let eVerb = String(rootVerb[..<rootVerb.index(before:rootVerb.endIndex)])
+                       // let eVerb = rootVerb.substring(to: rootVerb.index(before:rootVerb.endIndex))
                         let atPrefix = NSMutableAttributedString(string: "\(attrPrefix[inc])")
                         atPrefix.addAttributes(attrCree, range: NSMakeRange(0, atPrefix.length))
                         let atVerb = NSMutableAttributedString(string: "\(eVerb)")
@@ -2894,7 +2917,7 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
                         }
                     }
                     
-                    if (verb?.type == "VTA") && (strMode == "Inv"){
+                    if (verb?.type == "VTA") && (strMode == "Inv") && (i==1){
                         if person == "3" {
                             let prePrefix1 = NSMutableAttributedString(string: "\n or: ")
                             prePrefix1.addAttributes(attrPlain, range: NSMakeRange(0, prePrefix1.length))
@@ -2977,15 +3000,17 @@ class DisplayViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         var boolW = Bool()
         var boolTH = Bool()
         convertedText = Cree.lowercased()
-        var strLength = convertedText.characters.count - 1
-        let syllabics1 = ["z","Z","q","Q","a","A","1","b","B","t","T","g","G","5",
-                          "v","V","r","R","f","F","4","n","N","y","Y","h","H","6",
-                          "m","M","u","U","j","J","7","x","X","w","W","s","S","2",
-                          ",","<","i","I","k","K","8","c","C","e","E","d","D","3",
-                          ".",">","o","O","l","L","9","/","?","p","P",";",":","0"]
-        let syllabics2 = ["!","=","@","#","$","%","^","&","*","(","[","{",")"]
+        var strLength = convertedText.count - 1
+       
+        let syllabics1 = ["ᐊ","ᐋ","ᐃ", "ᐄ","ᐅ", "ᐆ", "ᐁ","ᒐ", "ᒑ", "ᒋ", "ᒌ", "ᒍ", "ᒎ", "ᒉ",
+                          "ᑲ", "ᑳ", "ᑭ", "ᑮ", "ᑯ", "ᑰ", "ᑫ", "ᒪ", "ᒫ", "ᒥ", "ᒦ", "ᒧ", "ᒨ", "ᒣ",
+                          "ᓇ", "ᓈ", "ᓂ", "ᓃ", "ᓄ", "ᓅ", "ᓀ", "ᐸ", "ᐹ", "ᐱ", "ᐲ", "ᐳ", "ᐴ", "ᐯ",
+                          "ᓴ", "ᓵ", "ᓯ", "ᓰ", "ᓱ", "ᓲ", "ᓭ", "ᑕ", "ᑖ", "ᑎ", "ᑏ", "ᑐ", "ᑑ", "ᑌ",
+                          "ᔭ", "ᔮ", "ᔨ", "ᔩ", "ᔪ", "ᔫ", "ᔦ", "ᖬ", "ᖭ", "ᖨ", "ᖩ", "ᖪ", "ᖫ", "ᖧ"]
+        let syllabics2 = ["ᐧ","ᐤ", "ᑊ", "ᐟ", "ᐠ", "ᐨ", "ᒼ", "ᐣ", "ᐢ", "ᐩ", "ᕽ", "ᐦ", "≠"]
+
         
-        for char in convertedText.characters {
+        for char in convertedText {
             if !((char == "-") || (char == " ") || (char == "(") || (char == ")")){
                 tempConvert.append(char)// fil tempConvert with all characters
             }  else {

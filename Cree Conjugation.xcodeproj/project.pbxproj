@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A126E42209221C900A200B9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A126E41209221C900A200B9 /* Media.xcassets */; };
 		6A276B47204051F900137E5E /* conjTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A276B46204051F900137E5E /* conjTableViewCell.swift */; };
 		6A276B492040526B00137E5E /* conjVerbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A276B482040526B00137E5E /* conjVerbs.swift */; };
 		6A4FDBD620447E5300266C00 /* WebpageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FDBD520447E5300266C00 /* WebpageViewController.swift */; };
 		6A58BAE32056B549005613BB /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 6A58BAE22056B549005613BB /* home.html */; };
-		6A6D05CF2085468F00BE2A8A /* WoodCREE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6A6D05CE2085468F00BE2A8A /* WoodCREE.TTF */; };
 		6A78EFBA204DDCBB00539981 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A78EFB9204DDCBA00539981 /* DisplayViewController.swift */; };
 		6A7E41DF2077B069000CD4D7 /* verbs2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E41DE2077B069000CD4D7 /* verbs2.txt */; };
 		6AC289CF2046EA79006CD505 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC289CE2046EA79006CD505 /* ListViewController.swift */; };
@@ -24,12 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A126E41209221C900A200B9 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		6A276B46204051F900137E5E /* conjTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = conjTableViewCell.swift; sourceTree = "<group>"; };
 		6A276B482040526B00137E5E /* conjVerbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = conjVerbs.swift; sourceTree = "<group>"; };
 		6A2862AD206145C7003CD108 /* Cree Conjugation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cree Conjugation.entitlements"; sourceTree = "<group>"; };
 		6A4FDBD520447E5300266C00 /* WebpageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebpageViewController.swift; sourceTree = "<group>"; };
 		6A58BAE22056B549005613BB /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = SOURCE_ROOT; };
-		6A6D05CE2085468F00BE2A8A /* WoodCREE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = WoodCREE.TTF; path = ../../../../Downloads/nonUnicodeFonts/WoodCREE.TTF; sourceTree = "<group>"; };
 		6A78EFB9204DDCBA00539981 /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		6A7E41DE2077B069000CD4D7 /* verbs2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = verbs2.txt; sourceTree = "<group>"; };
 		6AC289CE2046EA79006CD505 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -39,7 +39,6 @@
 		6AF6F341203E03D000ED168A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AF6F343203E03D000ED168A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6AF6F346203E03D000ED168A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6AF6F348203E03D000ED168A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Cree Conjugation/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		6AF6F34B203E03D000ED168A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AF6F34D203E03D000ED168A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,10 +94,9 @@
 				6ADAC536203F2E4D00C5B0C7 /* CreeVerb.swift */,
 				6A7E41DE2077B069000CD4D7 /* verbs2.txt */,
 				6A58BAE22056B549005613BB /* home.html */,
-				6AF6F348203E03D000ED168A /* Assets.xcassets */,
 				6AF6F34A203E03D000ED168A /* LaunchScreen.storyboard */,
 				6AF6F34D203E03D000ED168A /* Info.plist */,
-				6A6D05CE2085468F00BE2A8A /* WoodCREE.TTF */,
+				6A126E41209221C900A200B9 /* Media.xcassets */,
 			);
 			path = "Cree Conjugation";
 			sourceTree = "<group>";
@@ -130,12 +128,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = nistosap;
 				TargetAttributes = {
 					6AF6F33D203E03CF00ED168A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 8GM62J5SRE;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -173,8 +172,8 @@
 			files = (
 				6AF6F34C203E03D000ED168A /* LaunchScreen.storyboard in Resources */,
 				6A58BAE32056B549005613BB /* home.html in Resources */,
-				6A6D05CF2085468F00BE2A8A /* WoodCREE.TTF in Resources */,
 				6A7E41DF2077B069000CD4D7 /* verbs2.txt in Resources */,
+				6A126E42209221C900A200B9 /* Media.xcassets in Resources */,
 				6AF6F347203E03D000ED168A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,15 +228,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -266,6 +273,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -279,15 +287,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -308,6 +324,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -323,7 +340,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nistosap.Cree-Conjugation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -337,7 +355,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nistosap.Cree-Conjugation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
